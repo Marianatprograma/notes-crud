@@ -3,6 +3,7 @@ session_start();
 include("db.php");
 include("includes/header.php");
 
+
 ?>
 
 
@@ -13,16 +14,23 @@ include("includes/header.php");
 <?php endif; ?>
 
 
-
 <div class="container p-4">
 
     <div class="row">
         <div class="col-md-4">
-            <?php include("includes/notesForm.php") ?>
+            <?php 
+            if(isset($_SESSION['user_id'])){ 
+                include("includes/notesForm.php");    
+        }
+             ?>
         </div>
 
         <div class="col-md-8">
-            <?php include("includes/table.php") ?>
+            <?php
+            if(isset($_SESSION['user_id'])){ 
+                include("includes/table.php");
+                
+        } ?>
         </div>
     </div>
 

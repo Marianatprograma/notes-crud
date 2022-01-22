@@ -25,7 +25,11 @@ if (!empty($_POST['username']) && !empty($_POST['password'])){
         if(count($userdata) > 0 &&  password_verify($_POST['password'], $userdata['password'])){
          $_SESSION['user_id'] = $userdata['id'];
          $_SESSION['username'] = $username;
-         header('Location: index.php');
+         if($_SESSION['username'] === "admin"){
+                header('Location: admin.php');
+         }else{
+                header('Location: index.php');
+         }
         }else{
                 $_SESSION['message'] = 'Try again';
                 $_SESSION['message_type'] = 'warning';
